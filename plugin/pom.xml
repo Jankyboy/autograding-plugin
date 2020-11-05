@@ -5,7 +5,7 @@
     <groupId>org.jvnet.hudson.plugins</groupId>
     <artifactId>analysis-pom</artifactId>
     <version>4.2.1</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <groupId>io.jenkins.plugins</groupId>
@@ -22,7 +22,7 @@
     <changelist>-SNAPSHOT</changelist>
     <module.name>${project.groupId}.autograding</module.name>
 
-    <autograding-model.version>0.5.0</autograding-model.version>
+    <autograding-model.version>0.8.0</autograding-model.version>
 
     <commons.lang.version>3.11</commons.lang.version>
 
