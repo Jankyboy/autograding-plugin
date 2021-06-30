@@ -49,13 +49,18 @@ class AutoGradingChecksPublisher {
                 .withOutput(new ChecksOutputBuilder()
                         .withTitle(report.getHeader())
                         .withSummary(report.getSummary(score))
-                        .withText(report.getDetails(score, Collections.emptyList(), warnings))
+                        .withText(report.getDetails(score, Collections.emptyList())) // FIXME: we need to show the failures here as well
                         .withAnnotations(createAnnotations(warnings))
                         .build())
-                .withDetailsURL(new JenkinsFacade().getAbsoluteUrl(AutoGradingJobAction.ID))
+                .withDetailsURL(getAbsoluteUrl(run))
                 .build();
 
         publisher.publish(details);
+    }
+
+    @SuppressWarnings("deprecation")
+    private String getAbsoluteUrl(final Run<?, ?> run) {
+        return new JenkinsFacade().getAbsoluteUrl(run.getUrl(), AutoGradingJobAction.ID);
     }
 
     private List<ChecksAnnotation> createAnnotations(final List<Report> reports) {
